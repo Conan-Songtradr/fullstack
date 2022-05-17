@@ -13,38 +13,52 @@ export const Auth: FC<AuthProps> = ({ type }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    await useAuth({ body: { email, password }, type });
+    setIsLoading(false);
+    router.push("/");
+  };
+
   return (
     <Box height={"100vh"} width={"100vw"}>
       <Flex
         alignItems={"center"}
-        height={"100%"}
-        justifyContent={"center"}
         bg="teal.500"
         color="white"
+        height={"100%"}
+        justifyContent={"center"}
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <Heading marginBottom={"8"}>
             {type === "signin" ? "Login" : "Sign up"}
           </Heading>
           <Input
+            _placeholder={{ color: "white" }}
+            marginBottom={"8"}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             value={email}
             variant="outline"
-            marginBottom={"8"}
-            _placeholder={{ color: "white" }}
           />
 
           <Input
+            _placeholder={{ color: "white" }}
+            marginBottom={"8"}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             value={password}
             variant="outline"
-            marginBottom={"8"}
-            _placeholder={{ color: "white" }}
           />
 
-          <Button colorScheme="pink" color="white">
+          <Button
+            color="white"
+            colorScheme="pink"
+            isLoading={isLoading}
+            type="submit"
+          >
             {type === "signin" ? "Login" : "Sign up"}
           </Button>
         </form>
