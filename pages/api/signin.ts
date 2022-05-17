@@ -1,7 +1,3 @@
-// Check email exists
-// If email exists, check hashed password
-// Login and add to cookie
-
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 import cookie from "cookie";

@@ -6,5 +6,11 @@ export default function useFetch(url: string, data = undefined) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Something went wrong");
+    }
   });
 }

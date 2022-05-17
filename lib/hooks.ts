@@ -5,7 +5,7 @@ useSWR;
 useFetch;
 
 export const useUser = () => {
-  const { data, error, isValidating } = useSWR("/user", useFetch);
+  const { data, error, isValidating } = useSWR("user", useFetch);
 
   return {
     user: data,
@@ -15,10 +15,10 @@ export const useUser = () => {
 };
 
 export const usePlaylists = () => {
-  const { data, error, isValidating } = useSWR("/playlists", useFetch);
+  const { data, error, isValidating } = useSWR("playlists", useFetch);
 
   return {
-    playlists: data || [],
+    playlists: (data as any[]) || [],
     isLoading: isValidating,
     isError: error,
   };
