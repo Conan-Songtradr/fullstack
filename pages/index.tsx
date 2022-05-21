@@ -1,7 +1,7 @@
 import { usePlaylists } from "../lib/hooks";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+const Home = () => {
   const { playlists } = usePlaylists();
 
   return (
@@ -11,4 +11,6 @@ export default function Home() {
       ))}
     </div>
   );
-}
+};
+
+export default Home;

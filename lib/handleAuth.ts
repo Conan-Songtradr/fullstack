@@ -8,6 +8,6 @@ type AuthProps = {
   };
 };
 
-export default function useAuth({ body, type }: AuthProps) {
+export default function handleAuth({ body, type }: AuthProps) {
   return useFetch(type, body);
 }

@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import useAuth from "../lib/useAuth";
+import handleAuth from "../lib/handleAuth";
 
 type AuthProps = {
   type: "signin" | "signup";
@@ -17,27 +17,27 @@ export const Auth: FC<AuthProps> = ({ type }) => {
     e.preventDefault();
     setIsLoading(true);
 
-    await useAuth({ body: { email, password }, type });
+    await handleAuth({ body: { email, password }, type });
     setIsLoading(false);
     router.push("/");
   };
 
   return (
-    <Box height={"100vh"} width={"100vw"}>
+    <Box height="100vh" width="100vw">
       <Flex
-        alignItems={"center"}
+        alignItems="center"
         bg="teal.500"
         color="white"
-        height={"100%"}
-        justifyContent={"center"}
+        height="100%"
+        justifyContent="center"
       >
         <form onSubmit={handleSubmit}>
-          <Heading marginBottom={"8"}>
+          <Heading marginBottom="8">
             {type === "signin" ? "Login" : "Sign up"}
           </Heading>
           <Input
             _placeholder={{ color: "white" }}
-            marginBottom={"8"}
+            marginBottom="8"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             value={email}
@@ -46,7 +46,7 @@ export const Auth: FC<AuthProps> = ({ type }) => {
 
           <Input
             _placeholder={{ color: "white" }}
-            marginBottom={"8"}
+            marginBottom="8"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             value={password}

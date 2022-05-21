@@ -1,9 +1,6 @@
 import useSWR from "swr";
 import useFetch from "./useFetch";
 
-useSWR;
-useFetch;
-
 export const useUser = () => {
   const { data, error, isValidating } = useSWR("user", useFetch);
 

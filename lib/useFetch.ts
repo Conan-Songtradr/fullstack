@@ -9,8 +9,8 @@ export default function useFetch(url: string, data = undefined) {
   }).then((res) => {
     if (res.ok) {
       return res.json();
-    } else {
-      throw new Error("Something went wrong");
     }
+
+    throw new Error("Something went wrong");
   });
 }

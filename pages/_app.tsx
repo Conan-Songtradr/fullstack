@@ -30,22 +30,22 @@ const theme = extendTheme({
   },
 });
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       {Component.authPage ? (
         <Component {...pageProps} />
       ) : (
         <Box
+          display="grid"
           gridTemplateAreas={`
             "sidebar main"
             "player player"
          `}
-          display={"grid"}
+          gridTemplateColumns="300px 1fr"
+          gridTemplateRows="1fr 100px"
           height="100vh"
           width="100vw"
-          gridTemplateColumns={"300px 1fr"}
-          gridTemplateRows={"1fr 100px"}
         >
           <Sidebar />
           <Main>
@@ -56,6 +56,6 @@ function MyApp({ Component, pageProps }) {
       )}
     </ChakraProvider>
   );
-}
+};
 
 export default MyApp;
