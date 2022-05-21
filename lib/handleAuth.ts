@@ -1,4 +1,4 @@
-import useFetch from "./handleFetch";
+import handleFetch from "./handleFetch";
 
 type AuthProps = {
   type: "signin" | "signup";
@@ -9,5 +9,5 @@ type AuthProps = {
 };
 
 export default function handleAuth({ body, type }: AuthProps) {
-  return useFetch(type, body);
+  return handleFetch(type, body);
 }
