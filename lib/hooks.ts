@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import useFetch from "./useFetch";
+import handleFetch from "./handleFetch";
 
 export const useUser = () => {
-  const { data, error, isValidating } = useSWR("user", useFetch);
+  const { data, error, isValidating } = useSWR("user", handleFetch);
 
   return {
     user: data,
@@ -12,7 +12,7 @@ export const useUser = () => {
 };
 
 export const usePlaylists = () => {
-  const { data, error, isValidating } = useSWR("playlists", useFetch);
+  const { data, error, isValidating } = useSWR("playlists", handleFetch);
 
   return {
     playlists: (data as any[]) || [],

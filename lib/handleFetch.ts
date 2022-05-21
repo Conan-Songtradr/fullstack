@@ -1,4 +1,4 @@
-export default function useFetch(url: string, data = undefined) {
+export default function handleFetch(url: string, data = undefined) {
   return fetch(`${window.location.origin}/api/${url}`, {
     method: data ? "POST" : "GET",
     credentials: "include",
